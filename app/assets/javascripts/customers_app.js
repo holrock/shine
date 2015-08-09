@@ -1,26 +1,20 @@
 var app = angular.module('customers', []);
 app.controller('CustomerSearchController',
     [
-      '$scope', 
-      function($scope) {
+      '$scope',
+      '$http',
+      function($scope, $http) {
         $scope.customers = []
         $scope.search = function(searchTerm) {
-          $scope.customers = [
-            {
-              'first_name': 'Schuyler',
-              'last_name': 'Cremin',
-              'email': 'glies0@macgyver.net',
-              'username': 'jillian0',
-              'created_at': '2015-03-04',
-            },
-            {
-              'first_name': 'hoge',
-              'last_name': 'foo',
-              'email': 'bar@macgyver.net',
-              'username': 'quuuq',
-              'created_at': '2015-03-05',
-            },
-          ];
+          $http.get('/customers.json',
+              { 'params':  { 'keywords': searchTerm } }
+          ).success(
+            function(data, status, headers, config) {
+              $scope.customers = data;
+          }).error(
+            function(data, status, header, config) {
+              alert("There was a problem: " + status);
+          });
         }
       }
     ]
