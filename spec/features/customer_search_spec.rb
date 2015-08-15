@@ -39,6 +39,7 @@ feature 'Customer Search' do
     end
     within 'section.search-results' do
       expect(page).to have_content('Results')
+      expect(page.has_css?("ol li.list-group-item")).to eq(true)
       expect(page.all("ol li.list-group-item").count).to eq(4)
       expect(page.all('ol li.list-group-item')[0]).to have_content('JR')
       expect(page.all('ol li.list-group-item')[0]).to have_content('Bob')
@@ -53,6 +54,7 @@ feature 'Customer Search' do
     end
     within "section.search-results" do
       expect(page).to have_content("Results")
+      expect(page.has_css?("ol li.list-group-item")).to eq(true)
       expect(page.all("ol li.list-group-item").count).to eq(4)
       expect(page.all("ol li.list-group-item")[0]).to have_content("Bob")
       expect(page.all("ol li.list-group-item")[0]).to have_content("Jones")
