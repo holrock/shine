@@ -32,15 +32,15 @@
 //
 // For more information: http://github.com/modeset/teaspoon
 beforeEach(function() {
-  jasmine.addMatchers({
-    toEqualData: function(util, cusomEqualityTesters) {
-      return {
-        compare: function(actural, expeted) {
-          var result = {};
-          result.pass = angular.equasl(actural, expeted);
-          return result
-        }
-      };
-    }
-  });
+ jasmine.addMatchers({
+   toEqualData: function(util,customEqualityTesters) {
+     return {
+       compare: function(actual,expected) {
+         var result = {};
+         result.pass = angular.equals(actual, expected);
+         return result;
+       }
+     };
+   }
+ });
 });

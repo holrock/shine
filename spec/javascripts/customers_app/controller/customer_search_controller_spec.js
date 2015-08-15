@@ -5,20 +5,18 @@ describe('CustomerSearchController', function() {
         controller = null;
 
     beforeEach(module('customers'));
-    /*
 
     beforeEach(inject(function($controller, $rootScope) {
       scope = $rootScope.$new();
-      controller = $controller('CustomerSearchController', {
+      controller = $controller("CustomerSearchController", {
         $scope: scope
       });
-    });
-    */
+    }));
+
 
     // tests go hear..
-    /*(it('defaults to an empty customer list', function() {
-      expect(scope.customers).toBe([]);
+    it('defaults to an empty customer list', function() {
+      expect(scope.customers).toEqualData([]);
     });
-    */
   });
 });
